@@ -1,8 +1,9 @@
 # IT-Asset-Management
-Simple Python app for managing IT assets, It allows the follwoing:
-1- Viewing all Assets
-2- Find an Assets
-3- Add a new Asset
-4- Update an Asset
-5- Delete an Asset
-6- Importing Bulk of assets data from a CSV file
+A simple Python app for managing IT assets using a local SQLite database with below features:
+
+- Viewing all Assets
+- Find an Assets
+- Add a new Asset
+- Update an Asset
+- Delete an Asset
+- Importing Bulk of assets data from a CSV file via (Bulk_Add_Assets.csv)
