@@ -1,5 +1,5 @@
 # IT-Asset-Management
-A simple Python app for managing IT assets using a local SQLite database with below features:
+A simple Python app for managing IT assets using a local SQLite database with basic Functions below:
 
 - Viewing all Assets.
 - Find an Assets.
