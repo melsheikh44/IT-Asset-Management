@@ -14,7 +14,7 @@ A simple Python app for managing IT assets using a local SQLite database with ba
   (https://dev.to/dendihandian/installing-sqlite3-in-windows-44eb)
 - [sqlite3 — DB-API 2.0 interface for SQLite databases] -
   (https://docs.python.org/3/library/sqlite3.html)
-- [SQL As Understood By SQLite, Statements for Update, Insert, Delete, Create and Expressions for Like and Where] -
+- [SQL As Understood By SQLite, Checked Statements and Expressions] -
   (https://www.sqlite.org/lang.html)
 - [Handling SQLite3 Database Exceptions and Errors] -
   (https://www.pythonlore.com/handling-sqlite3-database-exceptions-and-errors/)
