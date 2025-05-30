@@ -1,5 +1,7 @@
 import sqlite3  # For using SQLite database
 import csv  # For reading CSV files
+from colorama import init, Fore # For displaying Success and Error messages with colored output
+init(autoreset=True)
 
 # Connect to the local SQLite database
 conn = sqlite3.connect("C:/Users/Yokii/Desktop/IT-Asset-Management/Database.db")
@@ -17,7 +19,7 @@ def view_assets():
             print(asset)
         print()
     except Exception as e:
-        print(f"Error reading assets: {e}\n")
+        print(Fore.RED + f"Error reading assets: {e}\n")
 
 
 # Function to get an asset by serial number, model, or user
@@ -39,7 +41,7 @@ def find_asset():
             keyword = input("Enter User: ").strip()
             cursor.execute("SELECT * FROM assets WHERE assigned_to LIKE ?", ('%' + keyword + '%',))
         else:
-            print("Invalid option.\n")
+            print(Fore.RED + "Invalid option.\n")
             return
 
         results = cursor.fetchall()
@@ -49,10 +51,10 @@ def find_asset():
                 print(row)
             print()
         else:
-            print("No matching assets found.\n")
+            print(Fore.YELLOW + "No matching assets found.\n")
 
     except Exception as e:
-        print(f"Error during search: {e}\n")
+        print(Fore.RED + f"Error during search: {e}\n")
 
 # Function to add a new asset
 def add_asset():
@@ -73,9 +75,9 @@ def add_asset():
                        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                        ''', (Serial, Model, Storage, RAM, Assigned_to, Date, Status, Warranty))
         conn.commit()
-        print("Asset added successfully.\n")
+        print(Fore.GREEN + "Asset added successfully.\n")
     except sqlite3.IntegrityError:
-        print("Error: Duplicate Serial number .\n")
+        print(Fore.RED + "Error: Duplicate Serial number .\n")
 
 # Function to update asset
 def update_asset():
@@ -94,12 +96,12 @@ def update_asset():
                        ''', (new_user, new_date, new_status, serial))
 
         if cursor.rowcount == 0:
-            print("No asset found with that serial number.\n")
+            print(Fore.YELLOW + "No asset found with that serial number.\n")
         else:
             conn.commit()
-            print("Asset updated.\n")
+            print(Fore.GREEN + "Asset updated.\n")
     except Exception as e:
-        print(f"Error updating asset: {e}\n")
+        print(Fore.RED + f"Error updating asset: {e}\n")
 
 # Function to delete asset
 def delete_asset():
@@ -109,7 +111,7 @@ def delete_asset():
         # Confirm before deleting
         confirm = input(f"Are you sure you want to delete asset '{serial}'? (yes/no): ").strip().lower()
         if confirm != "yes":
-            print("Delete cancelled.\n")
+            print(Fore.GREEN + "Delete cancelled.\n")
             return
 
         # Execute deletion
@@ -117,11 +119,11 @@ def delete_asset():
         conn.commit()
 
         if cursor.rowcount == 0:
-            print("No asset found with that serial number.\n")
+            print(Fore.YELLOW + "No asset found with that serial number.\n")
         else:
-            print("Asset deleted successfully.\n")
+            print(Fore.GREEN + "Asset deleted successfully.\n")
     except Exception as e:
-        print(f"Error deleting asset: {e}\n")
+        print(Fore.RED + f"Error deleting asset: {e}\n")
 
 # Function to bulk import assets from a CSV file
 def import_from_csv():
@@ -151,11 +153,11 @@ def import_from_csv():
                                    ))
                     count += 1
                 except sqlite3.IntegrityError:
-                    print(f"duplicate: {row['Serial_Number']}")
+                    print(Fore.RED + f"duplicate: {row['Serial_Number']}")
             conn.commit()
-            print(f"Imported {count} assets from CSV.\n")
+            print(Fore.GREEN + f"Imported {count} assets from CSV.\n")
     except Exception as e:
-        print(f"Error importing CSV: {e}\n")
+        print(Fore.RED + f"Error importing CSV: {e}\n")
 
 
 # Application Menu
@@ -186,7 +188,7 @@ def main():
             print("Goodbye")
             break
         else:
-            print("Invalid option. Try again.\n")
+            print(Fore.YELLOW + "Invalid option. Try again.\n")
 
 
 # To run the application
