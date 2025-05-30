@@ -20,3 +20,5 @@ A simple Python app for managing IT assets using a local SQLite database with ba
   (https://www.pythonlore.com/handling-sqlite3-database-exceptions-and-errors/)
 - [Solving SQLAlchemy IntegrityError When Inserting Data] -
   (https://www.slingacademy.com/article/solving-sqlalchemy-integrityerror-when-inserting-data/)
+- [Colorama for producing Colored Output] -
+  (https://pypi.org/project/colorama/)
